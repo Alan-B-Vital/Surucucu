@@ -33,8 +33,7 @@ class Menu:
         while 1:
             # 30 fps
             board.clock.tick(30)
-            # draws background
-            board.draw_background()
+
             # key cool down control
             if board.cd[0] >= board.cd[1]:
                 board.cd[2] = False
@@ -44,12 +43,18 @@ class Menu:
             if board.snake.food_check(board.food):
                 # if yes
                 if board.pace % board.snakepace == 0:
+                    # draws background
+                    board.draw_background()
+                    # moves snake and create new body part
                     board.snake.move_and_grow()
                     board.kill_food(board.snake)
                     board.score += 1
             else:
                 # if no
                 if board.pace % board.snakepace == 0:
+                    # draws background
+                    board.draw_background()
+                    # moves snake
                     board.snake.move()
                 board.draw_food()
 
